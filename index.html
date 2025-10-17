@@ -1,154 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Memes</title>
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
-  <!-- Tu CSS -->
-  <link rel="stylesheet" href="css/styles.css">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memes</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+    <!-- Tu CSS -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
-  <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <!-- Izquierda -->
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Audio</a></li>
-          <li class="nav-item" style="display:none;"><a class="nav-link" href="#">Video</a></li>
-        </ul>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Izquierda -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Audio</a></li>
+                    <li class="nav-item" style="display:none;"><a class="nav-link" href="#">Video</a></li>
+                </ul>
 
-        <!-- Derecha -->
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Opciones
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="#">Version 0.1</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li class="dropdown-item d-flex align-items-center justify-content-between">
-                    <span>Modo Oscuro</span>
-                    <label class="switch mb-0">
-                    <input type="checkbox" id="darkmode-toggle">
-                    <span class="slider round"></span>
-                    </label>
-                </li>
-              <li><a class="dropdown-item" href="#">Modo NSFW (NO DISPONIBLE)</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+                <!-- Derecha -->
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Opciones
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">Version 0.1</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li class="dropdown-item d-flex align-items-center justify-content-between">
+                                <span>Modo Oscuro</span>
+                                <label class="switch mb-0">
+                                    <input type="checkbox" id="darkmode-toggle">
+                                    <span class="slider round"></span>
+                                </label>
+                            </li>
+                            <li><a class="dropdown-item" href="#">Modo NSFW (NO DISPONIBLE)</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row g-3">
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100">
+                    <img src="img/Trollface.png" class="card-img-top cover-img" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Trollface</h5>
+                        <button class="btn btn-primary play-btn" data-audio="audio1">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                        <audio id="audio1" src="sonidos/troll.mp3"></audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100">
+                    <img src="img/cat.png" class="card-img-top cover-img" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Meow</h5>
+                        <button class="btn btn-primary play-btn" data-audio="audio2">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                        <audio id="audio2" src="sonidos/meow.mp3"></audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100">
+                    <img src="img/Tung-Tung-Tung-Sahur.webp" class="card-img-top cover-img" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Brr Brr Patapin</h5>
+                        <button class="btn btn-primary play-btn" data-audio="audio3">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                        <audio id="audio3" src="sonidos/brrbrrpatapin.mp3"></audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100">
+                    <img src="img/mariohugo.png" class="card-img-top cover-img" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">¿Como que no?</h5>
+                        <button class="btn btn-primary play-btn" data-audio="audio4">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                        <audio id="audio4" src="sonidos/comoqueno.mp3"></audio>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </nav>
 
-  <div class="container mt-4">
-    <div class="row g-3">
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100">
-          <img src="img/Trollface.png" class="card-img-top cover-img" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Trollface</h5>
-            <button class="btn btn-primary play-btn" data-audio="audio1">
-              <i class="fa-solid fa-play"></i>
-            </button>
-            <audio id="audio1" src="sonidos/troll.mp3"></audio>
-          </div>
+    <!-- 🔹 MODAL AUTOMÁTICO -->
+    <div class="modal fade" id="modalBienvenida" tabindex="-1" aria-labelledby="modalBienvenidaLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center">
+                <div class="modal-header">
+                    <h5 class="modal-title w-100" id="modalBienvenidaLabel">👋 ¡Bienvenido a la Zona Meme! v0.1</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Prepárate para una dosis intensa de humor y sonidos legendarios 🎧😂</p>
+                    <img src="img/Trollface.png" alt="Trollface" class="img-fluid" style="max-width:120px;">
+                    <h5>Se añadieron los siguientes sonidos:</h5>
+                    <p> - ¿Como que no?<br>
+                        - Brr Brr Patapin<br>
+                        - Meow<br>
+                        - Trollface<br>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">¡Vamos allá!</button>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100">
-          <img src="img/cat.png" class="card-img-top cover-img" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Meow</h5>
-            <button class="btn btn-primary play-btn" data-audio="audio2">
-              <i class="fa-solid fa-play"></i>
-            </button>
-            <audio id="audio2" src="sonidos/meow.mp3"></audio>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100">
-          <img src="img/Tung-Tung-Tung-Sahur.webp" class="card-img-top cover-img" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Brr Brr Patapin</h5>
-            <button class="btn btn-primary play-btn" data-audio="audio3">
-              <i class="fa-solid fa-play"></i>
-            </button>
-            <audio id="audio3" src="sonidos/brrbrrpatapin.mp3"></audio>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
-  <script>
-    // --- Bootstrap dropdowns ---
-    document.querySelectorAll('.dropdown-toggle').forEach(el => {
-      new bootstrap.Dropdown(el);
-    });
-
-    // --- Control de audio ---
-    document.querySelectorAll('.play-btn').forEach(btn => {
-      const icon = btn.querySelector('i');
-      const audio = document.getElementById(btn.dataset.audio);
-
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('audio').forEach(a => {
-          if (a !== audio) {
-            a.pause();
-            a.currentTime = 0;
-          }
+    <script>
+        // --- Bootstrap dropdowns ---
+        document.querySelectorAll('.dropdown-toggle').forEach(el => {
+            new bootstrap.Dropdown(el);
         });
 
-        document.querySelectorAll('.play-btn i').forEach(ic => {
-          ic.classList.remove('fa-pause');
-          ic.classList.add('fa-play');
+        // --- Control de audio ---
+        document.querySelectorAll('.play-btn').forEach(btn => {
+            const icon = btn.querySelector('i');
+            const audio = document.getElementById(btn.dataset.audio);
+
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('audio').forEach(a => {
+                    if (a !== audio) {
+                        a.pause();
+                        a.currentTime = 0;
+                    }
+                });
+
+                document.querySelectorAll('.play-btn i').forEach(ic => {
+                    ic.classList.remove('fa-pause');
+                    ic.classList.add('fa-play');
+                });
+
+                if (audio.paused) {
+                    audio.currentTime = 0;
+                    audio.play();
+                    icon.classList.remove('fa-play');
+                    icon.classList.add('fa-pause');
+                } else {
+                    audio.pause();
+                    icon.classList.remove('fa-pause');
+                    icon.classList.add('fa-play');
+                }
+
+                audio.addEventListener('ended', () => {
+                    icon.classList.remove('fa-pause');
+                    icon.classList.add('fa-play');
+                });
+            });
         });
 
-        if (audio.paused) {
-          audio.currentTime = 0;
-          audio.play();
-          icon.classList.remove('fa-play');
-          icon.classList.add('fa-pause');
-        } else {
-          audio.pause();
-          icon.classList.remove('fa-pause');
-          icon.classList.add('fa-play');
-        }
+        // --- 🌙 Modo oscuro ---
+        const darkToggle = document.getElementById('darkmode-toggle');
+        const body = document.body;
 
-        audio.addEventListener('ended', () => {
-          icon.classList.remove('fa-pause');
-          icon.classList.add('fa-play');
+        darkToggle.addEventListener('change', () => {
+            body.classList.toggle('dark-mode', darkToggle.checked);
         });
-      });
-    });
 
-    // --- 🌙 Modo oscuro con switch ---
-    const darkToggle = document.getElementById('darkmode-toggle');
-    const body = document.body;
-
-    darkToggle.addEventListener('change', () => {
-      body.classList.toggle('dark-mode', darkToggle.checked);
-    });
-  </script>
+        // --- 🎬 Mostrar modal automáticamente al cargar ---
+        window.addEventListener('DOMContentLoaded', () => {
+            const modalBienvenida = new bootstrap.Modal(document.getElementById('modalBienvenida'));
+            modalBienvenida.show();
+        });
+    </script>
 </body>
+
 </html>
