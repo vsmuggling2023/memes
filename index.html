@@ -62,12 +62,12 @@
         }
 
         /* 🔥 Rojo para NSFW */
-        .slider.bg-danger {
+        .slider.nsfw {
             background-color: #ccc;
             /* gris cuando está apagado */
         }
 
-        input:checked+.slider.bg-danger {
+        input:checked+.slider.nsfw {
             background-color: #dc3545;
             /* rojo cuando se activa */
         }
@@ -107,7 +107,7 @@
                             Opciones
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#">Versión 0.1</a></li>
+                            <li><a class="dropdown-item" href="#">Versión 0.2</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -126,7 +126,7 @@
                                 <span>Modo NSFW</span>
                                 <label class="switch mb-0">
                                     <input type="checkbox" id="nsfw-toggle">
-                                    <span class="slider round bg-danger"></span>
+                                    <span class="slider round nsfw"></span>
                                 </label>
                             </li>
                         </ul>
@@ -217,6 +217,19 @@
                 </div>
             </div>
 
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100">
+                    <img src="img/cucaracha.jpg" class="card-img-top cover-img" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">La Cucaracha</h5>
+                        <button class="btn btn-primary play-btn" data-audio="audio6">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                        <audio id="audio6" src="sonidos/cucaracha.ogg"></audio>
+                    </div>
+                </div>
+            </div>
+
             <!-- 🔞 Tarjeta NSFW (oculta hasta activar el modo) -->
             <div class="col-sm-6 col-md-4 col-lg-3 d-none nsfw">
                 <div class="card h-100 border-danger">
@@ -228,6 +241,32 @@
                         </button>
                         <audio id="audio1-nsfw" src="sonidos/pornhub_troll.ogg"></audio>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🎬 MODAL BIENVENIDA -->
+    <div class="modal fade" id="modalBienvenida" tabindex="-1" aria-labelledby="modalBienvenidaLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title w-100" id="modalBienvenidaLabel">👋 ¡Bienvenido a la Zona Meme! v0.2</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Prepárate para una dosis intensa de humor y sonidos legendarios 🎧😂</p>
+                    <center><img src="img/Trollface.png" alt="Trollface" class="img-fluid" style="max-width:120px;">
+                    </center>
+                    <h5>Se añadieron los siguientes sonidos:</h5>
+                    <p> - La cucaracha<br>
+                        - ¿Por qué no te callas?<br>
+                        -<strong><font color="red">Pornhub (Zona NFSW)</font></strong>
+                    </p>
+                    <p><font color="red"><strong>Se Añadió el modo NSFW</strong></font></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">¡Vamos allá!</button>
                 </div>
             </div>
         </div>
@@ -299,6 +338,12 @@
         const body = document.body;
         darkToggle.addEventListener('change', () => {
             body.classList.toggle('dark-mode', darkToggle.checked);
+        });
+
+        // --- 🎬 Modal bienvenida automático ---
+        window.addEventListener('DOMContentLoaded', () => {
+            const modalBienvenida = new bootstrap.Modal(document.getElementById('modalBienvenida'));
+            modalBienvenida.show();
         });
 
         // --- 🔞 Modo NSFW con advertencia ---
