@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/styles.css">
 
     <style>
-        /* --- Switch estilo (por si no está en tu CSS principal) --- */
+        /* --- Switch general --- */
         .switch {
             position: relative;
             display: inline-block;
@@ -52,25 +52,27 @@
             border-radius: 50%;
         }
 
-        /* Activo */
-        input:checked + .slider {
+        /* ✅ Activo (modo oscuro = verde) */
+        input:checked+.slider {
             background-color: #28a745;
         }
 
-        input:checked + .slider:before {
+        input:checked+.slider:before {
             transform: translateX(20px);
         }
 
-        /* Rojo para NSFW */
+        /* 🔥 Rojo para NSFW */
         .slider.bg-danger {
             background-color: #ccc;
+            /* gris cuando está apagado */
         }
 
-        input:checked + .slider.bg-danger {
+        input:checked+.slider.bg-danger {
             background-color: #dc3545;
+            /* rojo cuando se activa */
         }
 
-        /* Modo oscuro ejemplo */
+        /* 🌙 Modo oscuro fondo */
         .dark-mode {
             background-color: #121212;
             color: #f5f5f5;
@@ -105,8 +107,10 @@
                             Opciones
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#">Versión 0.2</a></li>
-                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Versión 0.1</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
 
                             <!-- 🌙 MODO OSCURO -->
                             <li class="dropdown-item d-flex align-items-center justify-content-between">
@@ -117,7 +121,7 @@
                                 </label>
                             </li>
 
-                            <!-- 🔥 MODO NSFW -->
+                            <!-- 🔞 MODO NSFW -->
                             <li class="dropdown-item d-flex align-items-center justify-content-between">
                                 <span>Modo NSFW</span>
                                 <label class="switch mb-0">
@@ -187,12 +191,38 @@
                 </div>
             </div>
 
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100">
+                    <img src="img/mapache.png" class="card-img-top cover-img" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Pedro, pedro</h5>
+                        <button class="btn btn-primary play-btn" data-audio="audio5">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                        <audio id="audio5" src="sonidos/pedro.ogg"></audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100">
+                    <img src="img/notecallas.jpg" class="card-img-top cover-img" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">¿Por qué no te callas?</h5>
+                        <button class="btn btn-primary play-btn" data-audio="audio6">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                        <audio id="audio6" src="sonidos/notecallas.ogg"></audio>
+                    </div>
+                </div>
+            </div>
+
             <!-- 🔞 Tarjeta NSFW (oculta hasta activar el modo) -->
             <div class="col-sm-6 col-md-4 col-lg-3 d-none nsfw">
                 <div class="card h-100 border-danger">
                     <img src="img/pornhub-troll.png" class="card-img-top cover-img" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title text-danger">La Cucaracha (NSFW)</h5>
+                        <h5 class="card-title text-danger">Pornhub</h5>
                         <button class="btn btn-danger play-btn" data-audio="audio1-nsfw">
                             <i class="fa-solid fa-play"></i>
                         </button>
@@ -203,29 +233,7 @@
         </div>
     </div>
 
-    <!-- 🎬 MODAL BIENVENIDA -->
-    <div class="modal fade" id="modalBienvenida" tabindex="-1" aria-labelledby="modalBienvenidaLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title w-100" id="modalBienvenidaLabel">👋 ¡Bienvenido a la Zona Meme! v0.2</h5>
-                </div>
-                <div class="modal-body">
-                    <p>Prepárate para una dosis intensa de humor y sonidos legendarios 🎧😂</p>
-                    <center><img src="img/Trollface.png" alt="Trollface" class="img-fluid" style="max-width:120px;"></center>
-                    <h5>Se añadieron los siguientes sonidos:</h5>
-                    <p> - ¿Por qué no te callas?<br>
-                        - La cucaracha
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">¡Vamos allá!</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ⚠️ MODAL ADVERTENCIA NSFW -->
+    <!-- ⚠️ MODAL NSFW -->
     <div class="modal fade" id="modalNSFW" tabindex="-1" aria-labelledby="modalNSFWLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-danger">
@@ -233,14 +241,16 @@
                     <h5 class="modal-title" id="modalNSFWLabel">
                         <i class="fa-solid fa-triangle-exclamation me-2"></i> Advertencia NSFW
                     </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Cerrar"></button>
                 </div>
                 <div class="modal-body">
                     ⚠️ Este modo contiene contenido sensible o no apto para todo público.<br><br>
                     ¿Deseas activar el <strong>Modo NSFW</strong>?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancelarNSFW">Cancelar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                        id="cancelarNSFW">Cancelar</button>
                     <button type="button" class="btn btn-danger" id="confirmarNSFW">Sí, activar</button>
                 </div>
             </div>
@@ -287,18 +297,11 @@
         // --- 🌙 Modo oscuro ---
         const darkToggle = document.getElementById('darkmode-toggle');
         const body = document.body;
-
         darkToggle.addEventListener('change', () => {
             body.classList.toggle('dark-mode', darkToggle.checked);
         });
 
-        // --- 🎬 Modal bienvenida ---
-        window.addEventListener('DOMContentLoaded', () => {
-            const modalBienvenida = new bootstrap.Modal(document.getElementById('modalBienvenida'));
-            modalBienvenida.show();
-        });
-
-        // --- 🔞 Modo NSFW con advertencia (mejorado) ---
+        // --- 🔞 Modo NSFW con advertencia ---
         const nsfwToggle = document.getElementById('nsfw-toggle');
         const modalNSFW = new bootstrap.Modal(document.getElementById('modalNSFW'));
         const confirmarNSFW = document.getElementById('confirmarNSFW');
@@ -308,7 +311,7 @@
         nsfwToggle.addEventListener('change', () => {
             if (nsfwToggle.checked && !nsfwActivo) {
                 modalNSFW.show();
-                setTimeout(() => nsfwToggle.checked = false, 100); // 🔧 Evita falso "ON"
+                setTimeout(() => nsfwToggle.checked = false, 100);
             } else if (!nsfwToggle.checked && nsfwActivo) {
                 nsfwActivo = false;
                 document.querySelectorAll('.nsfw').forEach(el => el.classList.add('d-none'));
@@ -318,7 +321,7 @@
 
         confirmarNSFW.addEventListener('click', () => {
             nsfwActivo = true;
-            nsfwToggle.checked = true; // ✅ El switch ahora se desliza
+            nsfwToggle.checked = true; // ✅ se mueve visualmente
             modalNSFW.hide();
             document.querySelectorAll('.nsfw').forEach(el => el.classList.remove('d-none'));
         });
@@ -328,4 +331,5 @@
         });
     </script>
 </body>
+
 </html>
