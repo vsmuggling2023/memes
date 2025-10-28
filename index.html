@@ -41,10 +41,10 @@
                             Opciones
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#">Version 0.1</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
+                            <li><a class="dropdown-item" href="#">Versión 0.1</a></li>
+                            <li><hr class="dropdown-divider"></li>
+
+                            <!-- 🌙 MODO OSCURO -->
                             <li class="dropdown-item d-flex align-items-center justify-content-between">
                                 <span>Modo Oscuro</span>
                                 <label class="switch mb-0">
@@ -52,7 +52,15 @@
                                     <span class="slider round"></span>
                                 </label>
                             </li>
-                            <li><a class="dropdown-item" href="#">Modo NSFW (NO DISPONIBLE)</a></li>
+
+                            <!-- 🔥 MODO NSFW -->
+                            <li class="dropdown-item d-flex align-items-center justify-content-between">
+                                <span>Modo NSFW</span>
+                                <label class="switch mb-0">
+                                    <input type="checkbox" id="nsfw-toggle">
+                                    <span class="slider round bg-danger"></span>
+                                </label>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -62,6 +70,7 @@
 
     <div class="container mt-4">
         <div class="row g-3">
+            <!-- Cartas normales -->
             <div class="col-sm-6 col-md-4 col-lg-3">
                 <div class="card h-100">
                     <img src="img/Trollface.png" class="card-img-top cover-img" alt="...">
@@ -131,7 +140,7 @@
                 <div class="card h-100">
                     <img src="img/notecallas.jpg" class="card-img-top cover-img" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">¿Por que no te callas?</h5>
+                        <h5 class="card-title">¿Por qué no te callas?</h5>
                         <button class="btn btn-primary play-btn" data-audio="audio6">
                             <i class="fa-solid fa-play"></i>
                         </button>
@@ -140,22 +149,23 @@
                 </div>
             </div>
 
-             <div class="col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100">
-                    <img src="img/cucaracha.jpg" class="card-img-top cover-img" alt="...">
+            <!-- 🔞 Tarjeta NSFW (oculta hasta activar el modo) -->
+            <div class="col-sm-6 col-md-4 col-lg-3 d-none nsfw">
+                <div class="card h-100 border-danger">
+                    <img src="img/pornhub-troll.png" class="card-img-top cover-img" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">La Cucaracha</h5>
-                        <button class="btn btn-primary play-btn" data-audio="audio7">
+                        <h5 class="card-title text-danger">Pornhub</h5>
+                        <button class="btn btn-danger play-btn" data-audio="audio1-nsfw">
                             <i class="fa-solid fa-play"></i>
                         </button>
-                        <audio id="audio7" src="sonidos/cucaracha.ogg"></audio>
+                        <audio id="audio1-nsfw" src="sonidos/pornhub_troll.ogg"></audio>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 🔹 MODAL AUTOMÁTICO -->
+    <!-- 🎬 MODAL BIENVENIDA -->
     <div class="modal fade" id="modalBienvenida" tabindex="-1" aria-labelledby="modalBienvenidaLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -166,7 +176,7 @@
                     <p>Prepárate para una dosis intensa de humor y sonidos legendarios 🎧😂</p>
                     <center><img src="img/Trollface.png" alt="Trollface" class="img-fluid" style="max-width:120px;"></center>
                     <h5>Se añadieron los siguientes sonidos:</h5>
-                    <p> - ¿Por que no te callas?<br>
+                    <p> - ¿Por qué no te callas?<br>
                         - La cucaracha
                     </p>
                 </div>
@@ -177,14 +187,34 @@
         </div>
     </div>
 
+    <!-- ⚠️ MODAL ADVERTENCIA NSFW -->
+    <div class="modal fade" id="modalNSFW" tabindex="-1" aria-labelledby="modalNSFWLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-danger">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="modalNSFWLabel">
+                        <i class="fa-solid fa-triangle-exclamation me-2"></i> Advertencia NSFW
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    ⚠️ Este modo contiene contenido sensible o no apto para todo público.<br><br>
+                    ¿Deseas activar el <strong>Modo NSFW</strong>?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancelarNSFW">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmarNSFW">Sí, activar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // --- Bootstrap dropdowns ---
-        document.querySelectorAll('.dropdown-toggle').forEach(el => {
-            new bootstrap.Dropdown(el);
-        });
+        // --- Dropdowns ---
+        document.querySelectorAll('.dropdown-toggle').forEach(el => new bootstrap.Dropdown(el));
 
         // --- Control de audio ---
         document.querySelectorAll('.play-btn').forEach(btn => {
@@ -193,10 +223,7 @@
 
             btn.addEventListener('click', () => {
                 document.querySelectorAll('audio').forEach(a => {
-                    if (a !== audio) {
-                        a.pause();
-                        a.currentTime = 0;
-                    }
+                    if (a !== audio) { a.pause(); a.currentTime = 0; }
                 });
 
                 document.querySelectorAll('.play-btn i').forEach(ic => {
@@ -207,17 +234,14 @@
                 if (audio.paused) {
                     audio.currentTime = 0;
                     audio.play();
-                    icon.classList.remove('fa-play');
-                    icon.classList.add('fa-pause');
+                    icon.classList.replace('fa-play', 'fa-pause');
                 } else {
                     audio.pause();
-                    icon.classList.remove('fa-pause');
-                    icon.classList.add('fa-play');
+                    icon.classList.replace('fa-pause', 'fa-play');
                 }
 
                 audio.addEventListener('ended', () => {
-                    icon.classList.remove('fa-pause');
-                    icon.classList.add('fa-play');
+                    icon.classList.replace('fa-pause', 'fa-play');
                 });
             });
         });
@@ -230,12 +254,39 @@
             body.classList.toggle('dark-mode', darkToggle.checked);
         });
 
-        // --- 🎬 Mostrar modal automáticamente al cargar ---
+        // --- 🎬 Modal bienvenida ---
         window.addEventListener('DOMContentLoaded', () => {
             const modalBienvenida = new bootstrap.Modal(document.getElementById('modalBienvenida'));
             modalBienvenida.show();
         });
+
+        // --- 🔞 Modo NSFW con advertencia ---
+        const nsfwToggle = document.getElementById('nsfw-toggle');
+        const modalNSFW = new bootstrap.Modal(document.getElementById('modalNSFW'));
+        const confirmarNSFW = document.getElementById('confirmarNSFW');
+        const cancelarNSFW = document.getElementById('cancelarNSFW');
+        let nsfwActivo = false;
+
+        nsfwToggle.addEventListener('change', () => {
+            if (nsfwToggle.checked && !nsfwActivo) {
+                modalNSFW.show();
+                nsfwToggle.checked = false; // se revierte hasta confirmar
+            } else if (!nsfwToggle.checked && nsfwActivo) {
+                nsfwActivo = false;
+                document.querySelectorAll('.nsfw').forEach(el => el.classList.add('d-none'));
+            }
+        });
+
+        confirmarNSFW.addEventListener('click', () => {
+            nsfwActivo = true;
+            nsfwToggle.checked = true;
+            modalNSFW.hide();
+            document.querySelectorAll('.nsfw').forEach(el => el.classList.remove('d-none'));
+        });
+
+        cancelarNSFW.addEventListener('click', () => {
+            nsfwToggle.checked = false;
+        });
     </script>
 </body>
-
 </html>
